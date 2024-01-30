@@ -7,17 +7,21 @@ export const tasks = pgTable('task', {
 });
 
 export const tasksRelations = relations(tasks, ({ one }) => ({
-	timers: one(timers)
+	timer: one(timers, {
+		fields: [tasks.id],
+		references: [timers.timerTaskId]
+	})
 }));
-
-export type Task = typeof tasks.$inferSelect;
 
 export const timers = pgTable('timer', {
 	id: serial('id').primaryKey(),
 	startTime: date('startTime'),
 	duration: varchar('duration'),
 	endTime: date('endTime'),
-	timer_task_id: integer('timer_task_id').references(() => tasks.id)
+	timerTaskId: integer('timer_task_id')
+		.references(() => tasks.id)
+		.notNull()
 });
 
 export type Timers = typeof timers.$inferSelect;
+export type Task = typeof tasks.$inferSelect;
