@@ -38,7 +38,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bits-ui": "^0.16.0",
+		"clsx": "^2.1.0",
 		"drizzle-orm": "^0.29.3",
-		"postgres": "^3.4.3"
+		"lucide-svelte": "^0.319.0",
+		"postgres": "^3.4.3",
+		"tailwind-merge": "^2.2.1",
+		"tailwind-variants": "^0.1.20"
 	}
 }

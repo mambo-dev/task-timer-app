@@ -1,8 +1,12 @@
+<script>
+	import AddTask from "$lib/create-utils/AddTask.svelte";
+
+</script>
 
   <div class="backdrop-blur-xl bg-white/30 max-w-5xl mt-10 mx-auto  min-h-[500px] rounded-md " >
-    <h1 class="text-3xl z-10 text-black font-bold underline">
-      Hello world!
-    </h1>
+   <div class="ml-auto w-fit px-4 py-2" >
+    <AddTask />
+  </div>
   </div>
   
   <style lang="postcss">
