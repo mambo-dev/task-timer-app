@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { date, integer, pgTable, serial, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, serial, varchar } from 'drizzle-orm/pg-core';
 
 export const tasks = pgTable('task', {
 	id: serial('id').primaryKey(),
@@ -13,11 +13,11 @@ export const tasksRelations = relations(tasks, ({ one }) => ({
 	})
 }));
 
-export const timers = pgTable('timer', {
+export const timers = pgTable('timers', {
 	id: serial('id').primaryKey(),
-	startTime: date('startTime'),
-	duration: varchar('duration'),
-	endTime: date('endTime'),
+	hours: integer('hours').default(0),
+	minute: integer('minutes').default(0),
+	second: integer('seconds').default(0),
 	timerTaskId: integer('timer_task_id')
 		.references(() => tasks.id)
 		.notNull()
