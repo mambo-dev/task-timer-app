@@ -4,6 +4,7 @@
 	import { min } from "drizzle-orm";
     export let form
     export let dialogOpen = false
+    export let taskId:number | null
     let seconds = 0
     let minutes = 0
     let hours = 0
@@ -95,7 +96,7 @@ function handleClearTimer(){
   
   <form  use:enhance  method='POST' class="w-fit flex  items-center  gap-x-2"  action="?/saveTimer" >
     <input name="timer" type="hidden" value={`${hours},${minutes},${seconds}`} />
-  
+    <input type="hidden" value={taskId} name="taskId" />
     {#if  timerStarted}
     <button on:click={handleClearTimer} type="button" class="text-white rounded-lg shadow-purple-400 py-2 px-4 bg-gradient-to-l from-green-500 to-emerald-500 inline-flex items-center justify-center"  >Clear</button>
 
